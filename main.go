@@ -130,6 +130,10 @@ func main() {
 		r.POST(pushAPIPath+"/job"+suffix+"/:job", handler.Push(ms, false, jobBase64Encoded, logger))
 		r.DELETE(pushAPIPath+"/job"+suffix+"/:job", handler.Delete(ms, jobBase64Encoded, logger))
 	}
+
+	// Rainbond customization
+	r.POST(pushAPIPath+"/myjob"+"/:job", handler.RbdPush(handler.Push(ms, false, false, logger), logger))
+
 	r.Handler("GET", *routePrefix+"/static/*filepath", handler.Static(asset.Assets, *routePrefix))
 
 	statusHandler := handler.Status(ms, asset.Assets, flags, externalPathPrefix, logger)

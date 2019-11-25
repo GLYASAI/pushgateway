@@ -6,3 +6,5 @@
 *~
 *.exe
 *.tar.gz
+
+.idea

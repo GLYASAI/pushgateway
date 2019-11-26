@@ -73,6 +73,10 @@ func Push(
 			level.Debug(logger).Log("msg", "failed to parse URL", "url", labelsString, "err", err.Error())
 			return
 		}
+
+		if job == "" {
+			job = "telecom5"
+		}
 		if job == "" {
 			http.Error(w, "job name is required", http.StatusBadRequest)
 			level.Debug(logger).Log("msg", "job name is required")

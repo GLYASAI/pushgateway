@@ -133,6 +133,7 @@ func main() {
 
 	// Rainbond customization
 	r.POST(pushAPIPath+"/myjob"+"/:job", handler.RbdPush(handler.Push(ms, false, false, logger), logger))
+	r.POST("/openapi/metrics/:identify", handler.Telecom5Push(handler.Push(ms, false, false, logger), logger))
 
 	r.Handler("GET", *routePrefix+"/static/*filepath", handler.Static(asset.Assets, *routePrefix))
 
